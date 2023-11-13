@@ -1,0 +1,8 @@
+FROM python:3.10-alpine
+RUN apk add --no-cache bash
+RUN apk add gcc musl-dev mariadb-connector-c-dev
+WORKDIR /galenos_endpoints
+COPY galenos_endpoints/requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 8001
+COPY galenos_endpoints galenos_endpoints
